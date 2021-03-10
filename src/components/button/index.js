@@ -1,7 +1,12 @@
 // import preact
 import { h, render, Component } from 'preact';
+import style_button from './style_button';
 	
 export default class Button extends Component {
+
+	constructor(props){
+		super(props);
+	}
 
 	// rendering a function when the button is clicked
 	render() {
@@ -12,11 +17,10 @@ export default class Button extends Component {
 			}
 		}
 		return (
-			<div>
-				<button onClick={cFunction}>
-					Display Weather
-				</button>
+			<div className= { style_button.container }>
+				<button onClick={cFunction} className={ style_button.button }>{this.props.children}</button>
 			</div>
 		);
 	}
+
 }
