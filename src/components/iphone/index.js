@@ -86,23 +86,24 @@ export default class Iphone extends Component {
 				</div>
 				<div className = {style.weatherData}>
 					<div className={ style.city }>{ this.state.locate }</div>
-					{/*<Condition condition = {this.state.cond}></Condition>*/}
 					<div className={ style.conditions }>{ this.state.desc }</div>
-					<span className={ tempStyles }>{ this.state.temp }</span>
-					{/*<div className={ style.hourTemperature }>{this.state.hour1} {this.state.hour2} {this.state.hour3}</div>*/}		
-					<Fact condition = {this.state.cond}></Fact>
-					<Character condition = {this.state.cond}></Character>
-					<Button clickFunction={ this.fetchWeatherData }>?</Button>
+					<div className={ tempStyles }>{ this.state.temp}</div>
+					<span className={ style.temperature }></span>
 				</div>
+				
+				{/*<Condition condition = {this.state.cond}></Condition>*/}
+				<Fact condition = {this.state.cond}></Fact>
+				<Character condition = {this.state.cond}></Character>
+				<Button clickFunction={ this.fetchWeatherData }>?</Button>
 			</Container>
 		);
 	}
 
 	parseResponse = (parsed_json) => {
 		var location = parsed_json['timezone'];
-		var temp_c = parsed_json['daily'][this.state.activeDay]['temp']['day'];
+		var temp_c = Math.round(parsed_json['daily'][this.state.activeDay]['temp']['day']);
 		var condition = parsed_json['daily'][this.state.activeDay]['weather']['0']['main']
-		//var condition = "Fog";
+		//var condition = "Thunderstorm";
 		var description = parsed_json['daily'][this.state.activeDay]['weather']['0']['description'];
 
 		// set states for fields depending on day so they could be rendered later on
@@ -112,8 +113,6 @@ export default class Iphone extends Component {
 			cond : condition,
 			desc: description,
 		});  
-		
-		    
 	}
 
 }
