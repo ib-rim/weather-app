@@ -2,7 +2,7 @@
 import { h, render, Component } from 'preact';
 // import stylesheets for tab
 import style_tab from './style_tab';
-class Tab extends Component {
+export default class Tab extends Component {
   
   constructor(props){
 		super(props);
@@ -34,6 +34,5 @@ class Tab extends Component {
 		
 	}
     
-  }
+}
   
-  export default Tab;

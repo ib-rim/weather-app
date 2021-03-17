@@ -13,12 +13,41 @@ export default class Fact extends Component {
 	render() {
 		let index = Math.floor(Math.random() * 5);
 
-		const thunderstormFacts = ["Thunderstorm 1", "Thunderstorm 2", "Thunderstorm 2", "Thunderstorm 4", "Thunderstorm 5"]
-		const rainFacts = ["Rain 1", "Rain 2", "Rain 3", "Rain 4", "Rain 5"]
-		const snowFacts = ["Snow 1", "Snow 2", "Snow 3", "Snow 4", "Snow 5"]
-		const fogFacts = ["Fog 1", "Fog 2", "Fog 3", "Fog 4", "Fog 5"]
-		const clearFacts = ["Clear 1", "Clear 2", "Clear 3", "Clear 4", "Clear 5"]
-		const cloudsFacts = ["Clouds 1", "Clouds 2", "Clouds 3", "Clouds 4", "Clouds 5"]
+		const thunderstormFacts =  ["Around 2,000 thunderstorms happen on Earth every minute!", 
+									"Did you know lightning often happens after a volcano erupts?", 
+									"Isn't it cool that lightning can get 5 times hotter than the Sun!", 
+									"Thunderstorms don't just happen on Earth, they can happen on Jupiter, Neptune, Saturn and Venus!", 
+									"Did you know that thunderstorms need moisture, air and wind to form?"]
+
+		const rainFacts =  ["In 2001, the rain was sometimes red in Kerala, India! ", 
+							"Did you know that whirlwinds can make it rain fish and frogs?", 
+							"Isn't it weird that Antartica is the driest place on Earth?", 
+							"Rain can fall from the sky and sometimes never touch the ground! ", 
+							"Did you know the smell of rain is called Petrichor?"]
+							
+		const snowFacts =  ["The coldest temperature in the world was -89° Celsius!", 
+							"In 1684, it was so cold that the River Thames in England froze for two months!", 
+							"Did you know that hail forms in thunderstorm clouds?", 
+							"The world's highest weather station is on Mount Everest!", 
+							"The highest temperature every recorded in Antartica is 14° Celsius!"]
+
+		const fogFacts =   ["Did you know that fog is formed from water vapour?", 
+							"Did you know that in cold places, fog can last for a whole day!", 
+							"Wind and tall objects (like buildings and trees) can break fog into patches!", 
+							"Fog can form when warm air blows slowly over a cool ocean or lake!", 
+							"Isn't it cool that fake fog can be made using a fog machine?"]
+
+		const clearFacts = ["Did you know the sun is a star?", 
+							"Fun Fact! Over 1 million Earths could fit inside the Sun!", 
+							"Fun Fact! The Sun is almost a perfect sphere!", 
+							"Did you know that the Sun rises in the East and sets in the West?", 
+							"It takes 8 minutes for light to travel from the Sun to the Earth!"]
+
+		const cloudsFacts =["A cloud is a big collection of water or ice crystals that are so small they can float!", 
+							"Did you know that clouds move because of the wind?", 
+							"Clouds can sometimes move at a speed of 100 miles per hour!", 
+							"By watching which direction clouds move, you can tell which direction the weather is coming from!", 
+							"How cool is it that clouds can contain millions of tonnes of water?"]
 
 		if(this.props.condition == "Thunderstorm"){	
 
@@ -50,9 +79,9 @@ export default class Fact extends Component {
 		}
 		else if(this.props.condition == "Clear"){
 
-			let fogFact = clearFacts[index];
+			let clearFact = clearFacts[index];
 			return (
-				<div className = {style_fact.text}> {fogFact} </div>
+				<div className = {style_fact.text}> {clearFact} </div>
 			);
 		}
 		else if(this.props.condition == "Clouds"){
