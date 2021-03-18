@@ -7,15 +7,19 @@ import Response from '../response';
 	
 export default class Quiz extends Component {
 
+	//Initial states retrieved from localStorage for saved preference
 	constructor(props){
 		super(props);
 		this.state = {
-			showQuestion: localStorage.getItem('showQuestion'),
-			points: parseFloat(localStorage.getItem('points')),
+			showQuestion: localStorage.getItem('showQuestion'), //Keeps track of whether to display question or response
+			points: parseFloat(localStorage.getItem('points')), //Keeps track of points earned from quiz
 		}
 	}
 
+	
 	componentDidMount() {
+
+		//Sets default states on first load
 		console.log(localStorage.getItem('showQuestion'));
 		if (localStorage.getItem('points') === null)
 		{	
@@ -38,6 +42,7 @@ export default class Quiz extends Component {
 			localStorage.setItem('date', new Date().getDate());
 		}
 
+		//Resets showQuestion state on new day
 		if(localStorage.getItem('date') != new Date().getDate())
 		{
 			this.setState({ 
@@ -46,13 +51,14 @@ export default class Quiz extends Component {
 			localStorage.setItem('showQuestion', this.state.showQuestion);
 			localStorage.setItem('date', new Date().getDate());
 		}
-		//localStorage.removeItem('showQuestion')
 	}
 
-	// rendering a background depending on the weather condition 
+	//Rendering random quiz question depending on the weather condition 
 	render() {
+		//Random number (0-4) used as index to select random question from array
 		let index = Math.floor(Math.random() * 5);
 
+		//Weather question arrays
 		const thunderstormQuestions = [
 			{
 				questionText: 'What is a thunderstorm?',
@@ -310,8 +316,8 @@ export default class Quiz extends Component {
 				],
 			},
 		];
-
-	
+		
+		//Adjusts states depending on whether question was answered correctly or incorrectly
 		const questionAnswered = (isCorrect) => {
 			
 			if (isCorrect) {

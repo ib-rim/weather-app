@@ -1,14 +1,15 @@
 // import preact
 import { h, render, Component } from 'preact';
-// import stylesheets for tab
+// import tab stylesheet
 import style_tab from './style_tab';
+
 export default class Tab extends Component {
   
   constructor(props){
 		super(props);
 	}
 
-	// rendering a function when the button is clicked
+	//Rendering a function when the tab is clicked
 	render() {
 		let cFunction = this.props.clickFunction;
 		if(typeof cFunction !== 'function'){
@@ -16,6 +17,7 @@ export default class Tab extends Component {
 				console.log("passed something as 'clickFunction' that wasn't a function !");
 			}
 		}
+
 		if(this.props.day == this.props.activeDay)
 		{
 			return (

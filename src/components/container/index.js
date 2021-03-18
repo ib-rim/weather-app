@@ -1,6 +1,6 @@
 // import preact
 import { h, render, Component } from 'preact';
-// import stylesheets for container
+// import container stylesheet
 import style_container from './style_container';
 
 export default class Container extends Component {
@@ -9,7 +9,7 @@ export default class Container extends Component {
 		super(props);
 	}
 
-	// rendering a background depending on the weather condition 
+	//Rendering a background depending on the weather condition 
 	render() {
 		if(this.props.condition == "Thunderstorm")
 		{
@@ -54,15 +54,6 @@ export default class Container extends Component {
 				</div>
 			);
 		}
-		else {
-			return (
-				<div className = {style_container.quiz}>
-					{this.props.children}
-				</div>
-			);
-		}
-		
 	}
-    
-  }
+}
   

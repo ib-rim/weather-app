@@ -1,19 +1,21 @@
 // import preact
 import { h, render, Component } from 'preact';
-// import stylesheets for condition
+// import response stylesheet
 import style_response from './style_response';
 	
 export default class Response extends Component {
 
+	//Initial states retrieved from localStorage for saved preference
 	constructor(props){
 		super(props);
 		this.state = {
-			response: localStorage.getItem('response'),
+			response: localStorage.getItem('response'), //Stores ('correctly'/'wrongly') depending on how question was answered
 		}
 	}
 
-	// rendering a background depending on the weather condition 
+	//Rendering quiz response depending on number of points 
 	render() {
+		//Renders new character unlock every 5 points
 		if(this.props.points == 5)
 		{
 			return (
@@ -92,6 +94,7 @@ export default class Response extends Component {
 				</div>
 			);
 		}
+		//Renders how many points until next character unlock
 		else if(this.props.points < 30){
 			return (
 				<div>
@@ -103,6 +106,7 @@ export default class Response extends Component {
 				</div>
 			);
 		}
+		//Renders default response
 		else {
 			return (
 				<div>

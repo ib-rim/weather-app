@@ -1,28 +1,31 @@
 // import preact
 import { h, render, Component } from 'preact';
-// import stylesheets for condition
+// import character stylesheet
 import style_character from './style_character';
 	
 export default class Character extends Component {
-
+	
+	//Initial states retrieved from localStorage for saved preference
 	constructor(props){
 		super(props);
-		this.setState({
-			character: localStorage.getItem('character'),
+		this.setState({ 
+			character: localStorage.getItem('character'), //decides which character asset is used
 		})
 	}
 
+	//Sets default character (1) on first load
 	componentDidMount() {
+
 		if (localStorage.getItem('character') === null)
 		{	
 			this.setState({ 
 				character: '1', 
 			});	
 			localStorage.setItem('character', this.state.character);
-			
 		}
 	}
 
+	//Used to change character both by state (temporary/rerenders page) and in localStorage (permanent)
 	setCharacter(num) {
 		this.setState({
 			character: num,
@@ -30,7 +33,8 @@ export default class Character extends Component {
 		localStorage.setItem('character', num)
 	}
 
-	// rendering a character depending on the weather condition 
+	//Rendering a character depending on the weather condition 
+	//Ability to switch character depends on number of points
 	render() {
 		if(this.props.condition == "Thunderstorm")
 		{		

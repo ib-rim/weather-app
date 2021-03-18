@@ -1,23 +1,16 @@
 // import preact
 import { h, render, Component } from 'preact';
-// import stylesheets for ipad, button and tabs
+// import stylesheets (Button and Tabs))
 import style from './style';
 import style_tabs from '../tabs/style_tabs';
 // import jquery for API calls
 import $ from 'jquery';
-// import the Button component
+// import components (Button, Tab, Container, Character, Fact and Quiz)
 import Button from '../button';
-// import the Tab component
 import Tab from '../tab';
-// import the Container component
 import Container from '../container';
-// import the Condition component
-import Condition from '../condition';
-// import the Character component
 import Character from '../character';
-// import the Fact component
 import Fact from '../fact';
-// import the Fact component
 import Quiz from '../quiz';
 
 export default class Iphone extends Component {
@@ -28,18 +21,15 @@ export default class Iphone extends Component {
 		super(props);
 
 		this.state = {
-			activeDay: 0,
-			activePage: "main",
-			retrieved: false,
+			activeDay: 0, //keeps track of which day is selected for tab component/weather data fetch
+			activePage: "main", //keeps track of which page to display
+			retrieved: false, //tracks first API call and data retrieval
 		}	
 	}
 
-	// a call to fetch weather data via wunderground
+	// a call to fetch weather data via OpenWeather API
 	fetchWeatherData = () => {
-		// API URL with a structure of : ttp://api.wunderground.com/api/key/feature/q/country-code/city.json
 		var url = "https://api.openweathermap.org/data/2.5/onecall?lat=51.5704&lon=-0.1278&units=metric&appid=db85a9b67f871c6286d826fef1aa1ff8";
-		//var url = "https://api.openweathermap.org/data/2.5/onecall?lat=-37.8136&lon=144.96318&units=metric&appid=e26d7a2d9dcde526549b30e79ba7c22e";
-		//var url = "http://api.openweathermap.org/data/2.5/weather?q=London&units=metric&appid=e26d7a2d9dcde526549b30e79ba7c22e";
 		$.ajax({
 			url: url,
 			dataType: "jsonp",
@@ -49,15 +39,18 @@ export default class Iphone extends Component {
 
 	}
 
+	//Fetches weather data on load 
 	componentDidMount() {
 		this.fetchWeatherData();
 	}
 
+	//Changes activeDay and calls API to get appropriate weather data 
 	changeDay(day) {
 		this.state.activeDay = day;
 		this.fetchWeatherData();
 	}
 
+	//Changes activePage to change which components are displayed
 	changePage(page) {
 		this.setState({
 			activePage: page,
@@ -69,13 +62,14 @@ export default class Iphone extends Component {
 		
 		// check if temperature data is fetched, if so add the sign styling to the page
 		const tempStyles = this.state.temp ? `${style.temperature} ${style.filled}` : style.temperature;
+		
+		//Month names for tab component
 		const monthNames = ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-		
-		
+				
 		//Makes sure weather data has been retrieved before rendering anything
 		if (this.state.retrieved)
 		{	
-			//Renders main page with weather data, day selection, fun fact and character
+			//Renders main page with weather data, day selection tabs, fun fact, character and page change button
 			if(this.state.activePage == "main"){
 				return (
 					<Container condition = {this.state.cond}>
@@ -107,7 +101,7 @@ export default class Iphone extends Component {
 					</Container>
 				);
 			}
-			//Renders quiz page with question, answer, response and points
+			//Renders quiz page with question, answer, response, points and page change button
 			else if (this.state.activePage == "quiz")
 			{
 				return (
@@ -120,6 +114,7 @@ export default class Iphone extends Component {
 		}
 	}
 
+	//Parses API call response (jsonp) to set appropriate states
 	parseResponse = (parsed_json) => {
 		var location = parsed_json['timezone'];
 		var temp_c = Math.round(parsed_json['daily'][this.state.activeDay]['temp']['day']);

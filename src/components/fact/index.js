@@ -1,6 +1,6 @@
 // import preact
 import { h, render, Component } from 'preact';
-// import stylesheets for condition
+// import fact stylesheet 
 import style_fact from './style_fact';
 	
 export default class Fact extends Component {
@@ -9,10 +9,12 @@ export default class Fact extends Component {
 		super(props);
 	}	
 
-	// rendering a background depending on the weather condition 
+	//Rendering a random fact depending on the weather condition 
 	render() {
+		//Random number (0-4) used as index to select random fact from array
 		let index = Math.floor(Math.random() * 5);
 
+		//Weather fact arrays
 		const thunderstormFacts =  ["Around 2,000 thunderstorms happen on Earth every minute!", 
 									"Did you know lightning often happens after a volcano erupts?", 
 									"Isn't it cool that lightning can get 5 times hotter than the Sun!", 
@@ -91,7 +93,5 @@ export default class Fact extends Component {
 				<div className = {style_fact.text}> {cloudsFact} </div>
 			);
 		}
-		
 	}
-
 }
