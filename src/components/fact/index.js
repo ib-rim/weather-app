@@ -21,7 +21,7 @@ export default class Fact extends Component {
 
 		const rainFacts =  ["In 2001, the rain was sometimes red in Kerala, India! ", 
 							"Did you know that whirlwinds can make it rain fish and frogs?", 
-							"Isn't it weird that Antartica is the driest place on Earth?", 
+							"Isn't it weird that Antarctica is the driest place on Earth?", 
 							"Rain can fall from the sky and sometimes never touch the ground! ", 
 							"Did you know the smell of rain is called Petrichor?"]
 							
@@ -29,7 +29,7 @@ export default class Fact extends Component {
 							"In 1684, it was so cold that the River Thames in England froze for two months!", 
 							"Did you know that hail forms in thunderstorm clouds?", 
 							"The world's highest weather station is on Mount Everest!", 
-							"The highest temperature every recorded in Antartica is 14° Celsius!"]
+							"The highest temperature every recorded in Antarctica is 14° Celsius!"]
 
 		const fogFacts =   ["Did you know that fog is formed from water vapour?", 
 							"Did you know that in cold places, fog can last for a whole day!", 

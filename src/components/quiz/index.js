@@ -16,6 +16,7 @@ export default class Quiz extends Component {
 	}
 
 	componentDidMount() {
+		console.log(localStorage.getItem('showQuestion'));
 		if (localStorage.getItem('points') === null)
 		{	
 			this.setState({ 
@@ -46,7 +47,6 @@ export default class Quiz extends Component {
 			localStorage.setItem('date', new Date().getDate());
 		}
 		//localStorage.removeItem('showQuestion')
-		//console.log(localStorage.getItem('showQuestion'))
 	}
 
 	// rendering a background depending on the weather condition 
@@ -322,6 +322,7 @@ export default class Quiz extends Component {
 					showQuestion: 'false', 
 				});	
 				localStorage.setItem('points', this.state.points)
+				
 			}
 			else {
 				this.setState({ 
@@ -329,7 +330,8 @@ export default class Quiz extends Component {
 					showQuestion: 'false',
 				});
 			}
-			localStorage.setItem('showQuestion', this.state.showQuestion)
+			localStorage.setItem('response', this.state.response);
+			localStorage.setItem('showQuestion', this.state.showQuestion);
 		};
 
 		if(this.state.showQuestion == 'true')
@@ -428,7 +430,7 @@ export default class Quiz extends Component {
 		else 
 		{
 			return (
-				<Response points = {this.state.points} response = {this.state.response}></Response>	
+				<Response points = {this.state.points}></Response>	
 			);
 		}
 		

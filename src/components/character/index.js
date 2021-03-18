@@ -7,139 +7,138 @@ export default class Character extends Component {
 
 	constructor(props){
 		super(props);
-		this.state = {
-			default: true,
-		}
-	}
-
-	changeChar(bool) {
 		this.setState({
-			default: bool,
+			character: localStorage.getItem('character'),
 		})
 	}
 
-	// rendering a background depending on the weather condition 
+	componentDidMount() {
+		if (localStorage.getItem('character') === null)
+		{	
+			this.setState({ 
+				character: '1', 
+			});	
+			localStorage.setItem('character', this.state.character);
+			
+		}
+	}
+
+	setCharacter(num) {
+		this.setState({
+			character: num,
+		})
+		localStorage.setItem('character', num)
+	}
+
+	// rendering a character depending on the weather condition 
 	render() {
 		if(this.props.condition == "Thunderstorm")
-		{	
-			if(this.state.default)
-			{	
-				if(localStorage.getItem('points') >= 5)
+		{		
+			if(localStorage.getItem('points') >= 5)
+			{
+				if(this.state.character == '1')
 				{
 					return (
-						<img onClick = {() => this.changeChar(false)} src="../../assets/characters/thunderstorm.png" className = {style_character.thunderstorm}></img>
+						<img onClick = {() => this.setCharacter('2')} src="../../assets/characters/thunderstorm.png" className = {style_character.thunderstorm}></img>
 					);
 				}
 				return (
-					<img src="../../assets/characters/thunderstorm.png" className = {style_character.thunderstorm}></img>
-				);
+					<img onClick = {() => this.setCharacter('1')} src="../../assets/characters/thunderstorm2.png" className = {style_character.thunderstorm}></img>
+				);			
 			}
-			else {
-				return (
-					<img onClick = {() => this.changeChar(true)} src="../../assets/characters/thunderstorm2.png" className = {style_character.thunderstorm}></img>
-				);
-			}
-			
+			return (
+				<img src="../../assets/characters/thunderstorm.png" className = {style_character.thunderstorm}></img>
+			);	
 		}
 		else if(this.props.condition == "Rain"){
 			
-			if(this.state.default)
+			if(localStorage.getItem('points') >= 10)
 			{
-				if(localStorage.getItem('points') >= 10)
+				if(this.state.character == '1')
 				{
 					return (
-						<img onClick = {() => this.changeChar(false)} src="../../assets/characters/rain.png" className = {style_character.rain}></img>
+						<img onClick = {() => this.setCharacter('2')} src="../../assets/characters/rain.png" className = {style_character.rain}></img>
 					);
 				}
 				return (
-					<img src="../../assets/characters/rain.png" className = {style_character.rain}></img>
-				);
+					<img onClick = {() => this.setCharacter('1')} src="../../assets/characters/rain2.png" className = {style_character.rain}></img>
+				);			
 			}
-			else {
-				return (
-					<img onClick = {() => this.changeChar(true)} src="../../assets/characters/rain2.png" className = {style_character.rain}></img>
-				);
-			}
+			return (
+				<img src="../../assets/characters/rain.png" className = {style_character.rain}></img>
+			);	
 		}
 		else if(this.props.condition == "Snow"){
 			
-			if(this.state.default)
+			if(localStorage.getItem('points') >= 15)
 			{
-				if(localStorage.getItem('points') >= 15)
+				if(this.state.character == '1')
 				{
 					return (
-						<img onClick = {() => this.changeChar(false)} src="../../assets/characters/snow.png" className = {style_character.snow}></img>
+						<img onClick = {() => this.setCharacter('2')} src="../../assets/characters/snow.png" className = {style_character.snow}></img>
 					);
 				}
 				return (
-					<img src="../../assets/characters/snow.png" className = {style_character.snow}></img>
-				);
+					<img onClick = {() => this.setCharacter('1')} src="../../assets/characters/snow2.png" className = {style_character.snow}></img>
+				);			
 			}
-			else {
-				return (
-					<img onClick = {() => this.changeChar(true)} src="../../assets/characters/snow2.png" className = {style_character.snow}></img>
-				);
-			}
+			return (
+				<img src="../../assets/characters/snow.png" className = {style_character.snow}></img>
+			);	
 		}
 		else if(this.props.condition == "Fog"){
 			
-			if(this.state.default)
+			if(localStorage.getItem('points') >= 20)
 			{
-				if(localStorage.getItem('points') >= 20)
+				if(this.state.character == '1')
 				{
 					return (
-						<img onClick = {() => this.changeChar(false)} src="../../assets/characters/fog.png" className = {style_character.fog}></img>
+						<img onClick = {() => this.setCharacter('2')} src="../../assets/characters/fog.png" className = {style_character.fog}></img>
 					);
 				}
 				return (
-					<img src="../../assets/characters/fog.png" className = {style_character.fog}></img>
-				);
+					<img onClick = {() => this.setCharacter('1')} src="../../assets/characters/fog2.png" className = {style_character.fog}></img>
+				);			
 			}
-			else {
-				return (
-					<img onClick = {() => this.changeChar(true)} src="../../assets/characters/fog2.png" className = {style_character.fog}></img>
-				);
-			}
+			return (
+				<img src="../../assets/characters/fog.png" className = {style_character.fog}></img>
+			);	
 		}
 		else if(this.props.condition == "Clear"){
 			
-			if(this.state.default)
+			if(localStorage.getItem('points') >= 25)
 			{
-				if(localStorage.getItem('points') >= 25)
+				if(this.state.character == '1')
 				{
 					return (
-						<img onClick = {() => this.changeChar(false)} src="../../assets/characters/clear.png" className = {style_character.clear}></img>
+						<img onClick = {() => this.setCharacter('2')} src="../../assets/characters/clear.png" className = {style_character.clear}></img>
 					);
 				}
 				return (
-					<img src="../../assets/characters/clear.png" className = {style_character.clear}></img>
-				);
+					<img onClick = {() => this.setCharacter('1')} src="../../assets/characters/clear2.png" className = {style_character.clear}></img>
+				);			
 			}
-			else {
-				return (
-					<img onClick = {() => this.changeChar(true)} src="../../assets/characters/clear2.png" className = {style_character.clear}></img>
-				);
-			}
+			return (
+				<img src="../../assets/characters/clear.png" className = {style_character.clear}></img>
+			);	
 		}
 		else if(this.props.condition == "Clouds"){
 			
-			if(this.state.default)
+			if(localStorage.getItem('points') >= 30)
 			{
-				if(localStorage.getItem('points') >= 30)
+				if(this.state.character == '1')
 				{
 					return (
-						<img onClick = {() => this.changeChar(false)} src="../../assets/characters/clouds.png" className = {style_character.clouds}></img>
+						<img onClick = {() => this.setCharacter('2')} src="../../assets/characters/clouds.png" className = {style_character.clouds}></img>
 					);
 				}
 				return (
-					<img src="../../assets/characters/clouds.png" className = {style_character.clouds}></img>
-				);
+					<img onClick = {() => this.setCharacter('1')} src="../../assets/characters/clouds2.png" className = {style_character.clouds}></img>
+				);			
 			}
-			else {
-				return (
-					<img onClick = {() => this.changeChar(true)} src="../../assets/characters/clouds2.png" className = {style_character.clouds}></img>
-				);
-			}
+			return (
+				<img src="../../assets/characters/clouds.png" className = {style_character.clouds}></img>
+			);	
 		}
 		
 	}
