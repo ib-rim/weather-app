@@ -2,7 +2,7 @@
 import { h, render, Component } from 'preact';
 // import stylesheets for condition
 import style_quiz from './style_quiz';
-//
+// import Response component
 import Response from '../response';
 	
 export default class Quiz extends Component {
@@ -13,6 +13,7 @@ export default class Quiz extends Component {
 		this.state = {
 			showQuestion: localStorage.getItem('showQuestion'), //Keeps track of whether to display question or response
 			points: parseFloat(localStorage.getItem('points')), //Keeps track of points earned from quiz
+			//points: 5,
 		}
 	}
 
@@ -20,7 +21,6 @@ export default class Quiz extends Component {
 	componentDidMount() {
 
 		//Sets default states on first load
-		console.log(localStorage.getItem('showQuestion'));
 		if (localStorage.getItem('points') === null)
 		{	
 			this.setState({ 

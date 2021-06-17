@@ -14,20 +14,19 @@ import Fact from '../fact';
 import Quiz from '../quiz';
 
 export default class Iphone extends Component {
-//var Iphone = React.createClass({
 
-	// a constructor with initial set states
+	//Cconstructor with initial set states
 	constructor(props){
 		super(props);
 
 		this.state = {
-			activeDay: 0, //keeps track of which day is selected for tab component/weather data fetch
-			activePage: "main", //keeps track of which page to display
-			retrieved: false, //tracks first API call and data retrieval
+			activeDay: 0, //Tracks which day is selected for tab component/weather data fetch
+			activePage: "main", //Tracks which page to display
+			retrieved: false, //Tracks first API call and data retrieval
 		}	
 	}
 
-	// a call to fetch weather data via OpenWeather API
+	//Call to fetch weather data via OpenWeather API
 	fetchWeatherData = () => {
 		var url = "https://api.openweathermap.org/data/2.5/onecall?lat=51.5704&lon=-0.1278&units=metric&appid=db85a9b67f871c6286d826fef1aa1ff8";
 		$.ajax({
@@ -55,11 +54,11 @@ export default class Iphone extends Component {
 		this.setState({
 			activePage: page,
 		})
+	
 	}
 
 	// the main render method for the iphone component
 	render() {
-		
 		// check if temperature data is fetched, if so add the sign styling to the page
 		const tempStyles = this.state.temp ? `${style.temperature} ${style.filled}` : style.temperature;
 		

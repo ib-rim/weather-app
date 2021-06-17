@@ -18,6 +18,7 @@ export default class Tab extends Component {
 			}
 		}
 
+		//Apply different styling for currently selected tab
 		if(this.props.day == this.props.activeDay)
 		{
 			return (

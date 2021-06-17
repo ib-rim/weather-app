@@ -20,7 +20,7 @@ export default class Response extends Component {
 		{
 			return (
 				<div>
-					<div className={style_response.answerResponseTop}>
+					<div className={style_response.answerResponse}>
 						You answered today's question {this.state.response}!
 					</div>
 					<div className={style_response.points}>Points: {this.props.points}</div>
@@ -33,7 +33,7 @@ export default class Response extends Component {
 		{
 			return (
 				<div>
-					<div className={style_response.answerResponseTop}>
+					<div className={style_response.answerResponse}>
 						You answered today's question {this.state.response}!
 					</div>
 					<div className={style_response.points}>Points: {this.props.points}</div>
@@ -46,7 +46,7 @@ export default class Response extends Component {
 		{
 			return (
 				<div>
-					<div className={style_response.answerResponseTop}>
+					<div className={style_response.answerResponse}>
 						You answered today's question {this.state.response}!
 					</div>
 					<div className={style_response.points}>Points: {this.props.points}</div>
@@ -59,7 +59,7 @@ export default class Response extends Component {
 		{
 			return (
 				<div>
-					<div className={style_response.answerResponseTop}>
+					<div className={style_response.answerResponse}>
 						You answered today's question {this.state.response}!
 					</div>
 					<div className={style_response.points}>Points: {this.props.points}</div>
@@ -72,7 +72,7 @@ export default class Response extends Component {
 		{
 			return (
 				<div>
-					<div className={style_response.answerResponseTop}>
+					<div className={style_response.answerResponse}>
 						You answered today's question {this.state.response}!
 					</div>
 					<div className={style_response.points}>Points: {this.props.points}</div>
@@ -85,7 +85,7 @@ export default class Response extends Component {
 		{
 			return (
 				<div>
-					<div className={style_response.answerResponseTop}>
+					<div className={style_response.answerResponse}>
 						You answered today's question {this.state.response}!
 					</div>
 					<div className={style_response.points}>Points: {this.props.points}</div>
@@ -98,7 +98,7 @@ export default class Response extends Component {
 		else if(this.props.points < 30){
 			return (
 				<div>
-					<div className={style_response.answerResponseMid}>
+					<div className={style_response.answerResponse}>
 						You answered today's question {this.state.response}!
 					</div>
 					<div className={style_response.points}>Points: {this.props.points}</div>
@@ -110,7 +110,7 @@ export default class Response extends Component {
 		else {
 			return (
 				<div>
-					<div className={style_response.answerResponseMid}>
+					<div className={style_response.answerResponse}>
 						You answered today's question {this.state.response}!
 					</div>
 					<div className={style_response.points}>Points: {this.props.points}</div>
